@@ -264,12 +264,13 @@ foundResumeUser = False
 # e will be our counter of processed users
 e = 0
 
-# Instantiate our array of threads. We'll be appending them inside the for-loop
-threads = []
 
 with open(args.usersFile, 'r') as f:
     groupIndex = 0
     while groupIndex < totalUsers/threadLimit:  # For every group of (threadLimit) ....
+
+        # Instantiate our array of threads. We'll be appending them
+        threads = []
         
         for user in islice(f, threadLimit):  # For each user in the chunk ....
             user = user.rstrip()             # Strip whitespace
